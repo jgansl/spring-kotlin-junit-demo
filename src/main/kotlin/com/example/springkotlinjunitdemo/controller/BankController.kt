@@ -1,25 +1,15 @@
 package com.example.springkotlinjunitdemo.controller
 
-import org.springframework.beans.factory.annotation.Autowired
-//import org.springframework.boot.test.context.SpringBooTest
-//import org.springframework.test.web.servlet.MockMvc
+import com.example.springkotlinjunitdemo.model.Bank
+import com.example.springkotlinjunitdemo.service.BankService
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 
-//import org.junit.jupiter.api.Test
-//import org.springframework.boot.test.context.SpringBootTest
-//
-//
-//@SpringBootTest
-//internal class BankController {
-//
-//    @Autowired
-//    lateinit var mockMvc: MockMvc
-//
-//    @Test
-//    fun 'should return all banks' () {
-//        //given
-//
-//        //when
-//
-//        //then
-//    }
-//}
+@RestController
+@RequestMapping("/api/banks")
+class BankController(private val service: BankService) {
+
+    @GetMapping
+    fun getBanks(): Collection<Bank> = service.getBanks()
+}

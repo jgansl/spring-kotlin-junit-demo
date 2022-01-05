@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
+import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.web.servlet.*
 import org.springframework.web.servlet.function.RequestPredicates.contentType
 
@@ -198,6 +199,7 @@ internal class BankControllerTest @Autowired constructor(
     @TestInstance(TestInstance.Lifecycle.PER_CLASS)
     inner class DeleteExistingBank {
         @Test
+//        @DirtiesContext //decreases as new initialization but caches for self in future test runs
         fun `should delete the bank with the given account number`() {
             //given
             val accountNumber = 1234
@@ -229,7 +231,6 @@ internal class BankControllerTest @Autowired constructor(
 
 
         }
-
-
     }
+
 }
